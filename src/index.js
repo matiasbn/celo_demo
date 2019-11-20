@@ -2,11 +2,10 @@ import { newKit } from '@celo/contractkit'
 import Logger from './config/logger'
 import './config/env'
 
-// const kit = newKit('https://alfajores-infura.celo-testnet.org')
-Logger.info(process.env.CELO_ADDRESS_1)
-const kit = newKit('http://localhost:8545')
+const { NODE_ENV, ALFAJORES_URL, LOCAL_URL } = process.env
+const kit = newKit(NODE_ENV === 'production' ? ALFAJORES_URL : LOCAL_URL)
 const { web3 } = kit;
 (async () => {
-  const balance = await web3.eth.getBalance('335192174a123c4fbfd253dfd0ba779612f63f63')
+  const balance = await web3.eth.getBalance(process.env.CELO_ADDRESS_1)
   Logger.info(web3.utils.fromWei(balance))
 })()
