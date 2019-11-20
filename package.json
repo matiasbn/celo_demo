@@ -7,9 +7,22 @@
   "author": "Matías Barrios",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "lint": "eslint src/**/*.js --fix && echo Lint passed ❤",
+    "clean": "rimraf dist && mkdir dist",
+    "prebuild": "npm run clean && cp package.json yarn.lock dist",
+    "build": "npm run prebuild && cross-env NODE_ENV=production babel src -D --out-dir dist --source-maps",
+    "start:dev": "nodemon --watch .env --watch src --exec babel-node src --source-maps"
+  },
   "dependencies": {
     "@babel/runtime": "^7.4.5",
-    "@celo/contractkit": "^0.2.0"
+    "@celo/contractkit": "^0.2.0",
+    "@hapi/joi": "^16.1.7",
+    "app-root-path": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "numeral": "^2.0.6",
+    "pino": "^5.13.6",
+    "pino-pretty": "^3.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
