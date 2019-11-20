@@ -1,6 +1,6 @@
 {
   "name": "celo-demo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Celo's  ContractKit demo for Pipol Pay",
   "main": "index.js",
   "repository": "git@github.com:matiasbn/celo_demo.git",
